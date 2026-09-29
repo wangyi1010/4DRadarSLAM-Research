@@ -134,3 +134,16 @@ number={},
 pages={},  
 doi={}}
 ```
+
+---
+
+## Fork note (Yi Wang)
+
+This repository is a research fork of **4DRadarSLAM** by Zhang et al.
+Original repository: https://github.com/zhuge2333/4DRadarSLAM
+
+- The unmodified upstream code is preserved on branch `baseline` (tag `baseline-original`)
+  for reproducibility.
+- Development happens on `dev` and `exp/*` branches; new modules and modifications
+  are documented in `notes/`.
+- License: GPL-3.0, retained from upstream. This is a derivative work under GPL-3.0.

@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# ROS / catkin build artifacts
+build/
+devel/
+install/
+log/
+logs/
+
+# Datasets (keep out of git; store under ~/Datasets/NTU4DRadLM)
+data/
+datasets/
+*.bag
+*.bag.active
+*.db3
+
+# Generated point clouds
+*.pcd
+
+# Raw / bulky results
+results/raw/
+
+# IDE
+.vscode/
+.idea/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
