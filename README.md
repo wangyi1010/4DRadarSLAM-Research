@@ -1,3 +1,28 @@
+# 4DRadarSLAM-Research
+
+Research and reproduction workspace based on the original
+[4DRadarSLAM](https://github.com/zhuge2333/4DRadarSLAM) project by Zhang et al.
+
+Current status:
+
+- M1 repository setup: complete
+- M2 Ubuntu baseline build: pending
+- M3 baseline reproduction: pending
+
+Repository structure:
+
+- `baseline` and `baseline-original`: unmodified upstream snapshot
+- `main`: stable research version
+- `dev`: active development
+- `exp/*`: isolated algorithm experiments
+
+The original GPL-3.0 license is retained. This repository is a derivative work
+distributed under GPL-3.0.
+
+---
+
+## Original project README
+
 # 4DRadarSLAM
 ## A 4D Imaging Radar SLAM System for Large-scale Environments based on Pose Graph Optimization
 
@@ -134,16 +159,3 @@ number={},
 pages={},  
 doi={}}
 ```
-
----
-
-## Fork note (Yi Wang)
-
-This repository is a research fork of **4DRadarSLAM** by Zhang et al.
-Original repository: https://github.com/zhuge2333/4DRadarSLAM
-
-- The unmodified upstream code is preserved on branch `baseline` (tag `baseline-original`)
-  for reproducibility.
-- Development happens on `dev` and `exp/*` branches; new modules and modifications
-  are documented in `notes/`.
-- License: GPL-3.0, retained from upstream. This is a derivative work under GPL-3.0.
