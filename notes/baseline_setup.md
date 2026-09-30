@@ -73,3 +73,6 @@ See notes/m3_cp_baseline.md. Summary:
 - Rel trans err at 49.2 m sub-traj: 12.9%
 - Vanilla config (loop closure OFF, ego-vel OFF); ~3-4x worse than paper.
 - Build-fix patch to CMakeLists needed: keyframe.cpp + g2o libs into scan_matching_odometry_nodelet.
+
+## M3.5 paper-fidelity runs (2026-09-30)
+See notes/m3_5_paper_fidelity.md. Three configs tested; frozen baseline at 5.15m ATE / 11.4% RE49 (Run A: paper kf density, default everything else). Paper's 2.61m / 3.56% is 2x better on translation and 10x better on rotation — unreachable from released code + documented launch args alone. Dyn-removal + ego-vel combo BROKEN (29m ATE) — do not enable together.
