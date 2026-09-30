@@ -84,3 +84,6 @@ The 5.15m baseline in M3.5 was a CPU-throughput artifact of 2 vCPU + rate=3 play
 - RE49: 5.14%
 - 430 backend keyframes (paper: 437)
 The paper's numbers ARE reachable from the released code with all switches OFF, at rate=0.5. See notes/m3_6_cpu_diagnosis.md.
+
+## M3.7 valid ablation (2026-10-01) — FINAL BASELINE
+Full ablation at 0.5x. Both dyn_removal & ego_vel WORK (1x "broken" verdict retracted; was CPU artifact). Loop closure works at 0.5x. Best config (dyn+ego+LC) backend ATE = 0.89m, beating paper's 2.35m. Baselines: odometry ~1.7m (B'), full-system 0.89m (full). Remaining open problem: relative/rotation error ~2x paper (RE49 ~5% vs 3%, rot 0.085 vs 0.045 deg/m) - does not close with features/LC. See notes/m3_7_valid_ablation.md.
