@@ -66,3 +66,10 @@ Recorded from the compiled droplet workspace — these are the exact SHAs `catki
 | barometer_bmp388 | zhuge2333/barometer_bmp388 | 769411c24242faf15cd111f79b515e905a4c1550 |
 
 The `4DRadarSLAM` SHA matches this repo's `baseline` branch / `baseline-original` tag exactly.
+
+## M3 baseline result (2026-09-30, cp sequence)
+See notes/m3_cp_baseline.md. Summary:
+- ATE trans RMSE: 5.80 m over 245.85 m path
+- Rel trans err at 49.2 m sub-traj: 12.9%
+- Vanilla config (loop closure OFF, ego-vel OFF); ~3-4x worse than paper.
+- Build-fix patch to CMakeLists needed: keyframe.cpp + g2o libs into scan_matching_odometry_nodelet.

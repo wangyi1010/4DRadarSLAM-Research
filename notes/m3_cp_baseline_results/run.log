@@ -1,0 +1,419 @@
+... logging to /root/.ros/log/3b10fa54-bcc4-11f1-a372-0ae2f23b4924/roslaunch-ac2023414f06-6472.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/root/catkin_ws/m3_runtime/radar_graph_slam_headless.launch
+[1mstarted roslaunch server http://ac2023414f06:40093/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /radar_graph_slam_nodelet/accum_distance_thresh: 50.0
+ * /radar_graph_slam_nodelet/barometer_edge_robust_kernel: Huber
+ * /radar_graph_slam_nodelet/barometer_edge_robust_kernel_size: 1.0
+ * /radar_graph_slam_nodelet/barometer_edge_stddev: 0.47
+ * /radar_graph_slam_nodelet/barometer_edge_type: 1
+ * /radar_graph_slam_nodelet/const_stddev_q: 0.1
+ * /radar_graph_slam_nodelet/const_stddev_x: 0.5
+ * /radar_graph_slam_nodelet/dataset_name: loop2
+ * /radar_graph_slam_nodelet/distance_from_last_edge_thresh: 10
+ * /radar_graph_slam_nodelet/distance_thresh: 10.0
+ * /radar_graph_slam_nodelet/enable_barometer: False
+ * /radar_graph_slam_nodelet/enable_gps: False
+ * /radar_graph_slam_nodelet/enable_loop_closure: False
+ * /radar_graph_slam_nodelet/enable_odom_check: True
+ * /radar_graph_slam_nodelet/enable_pf: True
+ * /radar_graph_slam_nodelet/enable_preintegration: False
+ * /radar_graph_slam_nodelet/fix_first_node: True
+ * /radar_graph_slam_nodelet/fix_first_node_adaptive: True
+ * /radar_graph_slam_nodelet/fix_first_node_stddev: 10 10 10 1 1 1
+ * /radar_graph_slam_nodelet/g2o_solver_num_iterations: 512
+ * /radar_graph_slam_nodelet/g2o_solver_type: lm_var_cholmod
+ * /radar_graph_slam_nodelet/gps_edge_intervals: 15
+ * /radar_graph_slam_nodelet/gps_edge_robust_kernel: Huber
+ * /radar_graph_slam_nodelet/gps_edge_robust_kernel_size: 1.0
+ * /radar_graph_slam_nodelet/gps_edge_stddev_xy: 5.0
+ * /radar_graph_slam_nodelet/gps_edge_stddev_z: 5.0
+ * /radar_graph_slam_nodelet/graph_update_interval: 2.0
+ * /radar_graph_slam_nodelet/historyKeyframeFitnessScore: 6
+ * /radar_graph_slam_nodelet/keyframe_delta_angle: 0.2612
+ * /radar_graph_slam_nodelet/keyframe_delta_trans: 2
+ * /radar_graph_slam_nodelet/keyframe_min_size: 500
+ * /radar_graph_slam_nodelet/loop_closure_edge_robust_kernel: Huber
+ * /radar_graph_slam_nodelet/loop_closure_edge_robust_kernel_size: 1.0
+ * /radar_graph_slam_nodelet/map_cloud_resolution: 0.05
+ * /radar_graph_slam_nodelet/map_cloud_update_interval: 6.0
+ * /radar_graph_slam_nodelet/max_baro_difference: 2.0
+ * /radar_graph_slam_nodelet/max_gps_edge_stddev_xy: 1.5
+ * /radar_graph_slam_nodelet/max_gps_edge_stddev_z: 3.0
+ * /radar_graph_slam_nodelet/max_keyframes_per_update: 30
+ * /radar_graph_slam_nodelet/max_stddev_q: 0.2
+ * /radar_graph_slam_nodelet/max_stddev_x: 5.0
+ * /radar_graph_slam_nodelet/max_yaw_difference: 20
+ * /radar_graph_slam_nodelet/min_loop_interval_dist: 10.0
+ * /radar_graph_slam_nodelet/min_stddev_q: 0.05
+ * /radar_graph_slam_nodelet/min_stddev_x: 0.1
+ * /radar_graph_slam_nodelet/odom_check_rot_thresh: 0.05
+ * /radar_graph_slam_nodelet/odom_check_trans_thresh: 0.3
+ * /radar_graph_slam_nodelet/odometry_edge_robust_kernel: NONE
+ * /radar_graph_slam_nodelet/odometry_edge_robust_kernel_size: 1.0
+ * /radar_graph_slam_nodelet/pairwise_check_rot_thresh: 0.2
+ * /radar_graph_slam_nodelet/pairwise_check_trans_thresh: 1.5
+ * /radar_graph_slam_nodelet/preinteg_orient_stddev: 1
+ * /radar_graph_slam_nodelet/preinteg_trans_stddev: 5
+ * /radar_graph_slam_nodelet/reg_correspondence_randomness: 20
+ * /radar_graph_slam_nodelet/reg_max_correspondence_distance: 2.0
+ * /radar_graph_slam_nodelet/reg_max_optimizer_iterations: 20
+ * /radar_graph_slam_nodelet/reg_maximum_iterations: 64
+ * /radar_graph_slam_nodelet/reg_nn_search_method: DIRECT7
+ * /radar_graph_slam_nodelet/reg_num_threads: 0
+ * /radar_graph_slam_nodelet/reg_resolution: 1.0
+ * /radar_graph_slam_nodelet/reg_transformation_epsilon: 0.1
+ * /radar_graph_slam_nodelet/reg_use_reciprocal_correspondences: False
+ * /radar_graph_slam_nodelet/registration_method: FAST_APDGICP
+ * /radar_graph_slam_nodelet/sc_azimuth_range: 56.5
+ * /radar_graph_slam_nodelet/sc_dist_thresh: 0.5
+ * /radar_graph_slam_nodelet/show_sphere: False
+ * /radar_graph_slam_nodelet/use_const_inf_matrix: False
+ * /radar_graph_slam_nodelet/use_egovel_preinteg_trans: False
+ * /radar_graph_slam_nodelet/var_gain_a: 20.0
+ * /radar_preprocessing_nodelet/bilateral_sigma_r: 0.03
+ * /radar_preprocessing_nodelet/bilateral_sigma_s: 5
+ * /radar_preprocessing_nodelet/distance_far_thresh: 100.0
+ * /radar_preprocessing_nodelet/distance_near_thresh: 2
+ * /radar_preprocessing_nodelet/downsample_method: VOXELGRID
+ * /radar_preprocessing_nodelet/downsample_resolution: 0.1
+ * /radar_preprocessing_nodelet/enable_dynamic_object_removal: False
+ * /radar_preprocessing_nodelet/gt_file_location: /home/zhuge/datas...
+ * /radar_preprocessing_nodelet/outlier_removal_method: RADIUS
+ * /radar_preprocessing_nodelet/power_threshold: 0.0
+ * /radar_preprocessing_nodelet/radius_min_neighbors: 1
+ * /radar_preprocessing_nodelet/radius_radius: 0.5
+ * /radar_preprocessing_nodelet/statistical_mean_k: 30
+ * /radar_preprocessing_nodelet/statistical_stddev: 1.2
+ * /radar_preprocessing_nodelet/use_distance_filter: True
+ * /radar_preprocessing_nodelet/z_high_thresh: 100.0
+ * /radar_preprocessing_nodelet/z_low_thresh: -100.0
+ * /radar_slam/baselinkFrame: base_link
+ * /radar_slam/extrinsicRPY: [0.999735807578, ...
+ * /radar_slam/extrinsicRot: [0.999735807578, ...
+ * /radar_slam/extrinsicTrans: [-0.3176955976234...
+ * /radar_slam/gpsTopic: /ublox/fix
+ * /radar_slam/imuAccBiasN: 0.000117823927080...
+ * /radar_slam/imuAccNoise: 0.002228116003505...
+ * /radar_slam/imuGravity: 9.80511
+ * /radar_slam/imuGyrBiasN: 2.616129872371749...
+ * /radar_slam/imuGyrNoise: 0.000116679510427...
+ * /radar_slam/imuRPYWeight: 0.01
+ * /radar_slam/imuTopic: /vectornav/imu
+ * /radar_slam/lidarFrame: 
+ * /radar_slam/mapFrame: map
+ * /radar_slam/odomTopic: /odom
+ * /radar_slam/odometryFrame: odom
+ * /radar_slam/pointCloudTopic: /radar_enhanced_pcl
+ * /rosdistro: noetic
+ * /rosversion: 1.17.4
+ * /scan_matching_odometry_nodelet/azimuth_var: 0.5
+ * /scan_matching_odometry_nodelet/dist_var: 0.86
+ * /scan_matching_odometry_nodelet/downsample_method: NONE
+ * /scan_matching_odometry_nodelet/downsample_resolution: 0.1
+ * /scan_matching_odometry_nodelet/elevation_var: 1.0
+ * /scan_matching_odometry_nodelet/enable_imu_fusion: False
+ * /scan_matching_odometry_nodelet/enable_imu_thresholding: False
+ * /scan_matching_odometry_nodelet/enable_robot_odometry_init_guess: False
+ * /scan_matching_odometry_nodelet/enable_scan_to_map: False
+ * /scan_matching_odometry_nodelet/enable_transform_thresholding: True
+ * /scan_matching_odometry_nodelet/imu_debug_out: True
+ * /scan_matching_odometry_nodelet/imu_fusion_ratio: 0.1
+ * /scan_matching_odometry_nodelet/keyframe_delta_angle: 0.2612
+ * /scan_matching_odometry_nodelet/keyframe_delta_trans: 0.5
+ * /scan_matching_odometry_nodelet/keyframe_min_size: 100
+ * /scan_matching_odometry_nodelet/max_acceptable_angle: 3
+ * /scan_matching_odometry_nodelet/max_acceptable_trans: 1.0
+ * /scan_matching_odometry_nodelet/max_diff_angle: 0.8
+ * /scan_matching_odometry_nodelet/max_diff_trans: 0.3
+ * /scan_matching_odometry_nodelet/max_egovel_cum: 1
+ * /scan_matching_odometry_nodelet/max_submap_frames: 5
+ * /scan_matching_odometry_nodelet/reg_correspondence_randomness: 20
+ * /scan_matching_odometry_nodelet/reg_max_correspondence_distance: 2.0
+ * /scan_matching_odometry_nodelet/reg_max_optimizer_iterations: 20
+ * /scan_matching_odometry_nodelet/reg_maximum_iterations: 64
+ * /scan_matching_odometry_nodelet/reg_nn_search_method: DIRECT7
+ * /scan_matching_odometry_nodelet/reg_num_threads: 0
+ * /scan_matching_odometry_nodelet/reg_resolution: 1.0
+ * /scan_matching_odometry_nodelet/reg_transformation_epsilon: 0.1
+ * /scan_matching_odometry_nodelet/reg_use_reciprocal_correspondences: False
+ * /scan_matching_odometry_nodelet/registration_method: FAST_APDGICP
+ * /scan_matching_odometry_nodelet/use_ego_vel: False
+ * /use_sim_time: True
+
+NODES
+  /
+    player (rosbag/play)
+    radar_graph_slam_nodelet (nodelet/nodelet)
+    radar_preprocessing_nodelet (nodelet/nodelet)
+    radarslam_nodelet_manager (nodelet/nodelet)
+    scan_matching_odometry_nodelet (nodelet/nodelet)
+
+auto-starting new master
+[1mprocess[master]: started with pid [6480][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/root/catkin_ws/m3_runtime/radar_graph_slam_headless.launch http://localhost:11311
+[1msetting /run_id to 3b10fa54-bcc4-11f1-a372-0ae2f23b4924[0m
+[0m[INFO] [1790768643.078551664]: Initializing nodelet with 2 worker threads.[0m
+enable_imu_fusion = 0
+downsample: NONE
+registration: FAST_APDGICP
+registration: FAST_APDGICP
+[0m[INFO] [1790768643.550267227]: [RadarEgoVelocityEstimator]: Number of Ransac iterations: 3[0m
+Radar_to_livox = 
+ [0.9987420694356727, -0.02154593184251807, 0.04527979957349116, 0.2960016945940701;
+ 0.02057017793626469, 0.9995486686923027, 0.02190458926318335, -0.1298868374575176;
+ -0.04573127973037173, -0.02094561026271845, 0.9987339684250071, -0.004543126256660535;
+ 0, 0, 0, 1]
+
+downsample: VOXELGRID 0.1
+outlier_removal: RADIUS 0.5 - 1
+[0m[INFO] [1790768643.925500707, 1645868413.530930147]: Initial IMU euler angles (RPY): -179.739, 0.207262, -126.006[0m
+construct solver: lm_var_cholmod
+# Using CHOLMOD poseDim -1 landMarkDim -1 blockordering 1
+done
+registration: FAST_APDGICP
+registration: FAST_APDGICP
+[0m[INFO] [1790768645.511815271, 1645868418.294833789]: Initial Position Matrix = [0m
+0.999989, 1.9576e-06, -0.00467614, 0, 
+2.11758e-22, 1, 0.000418636, 0, 
+0.00467614, -0.000418631, 0.999989, 0, 
+0, 0, 0, 1, 
+
+Too large transform!!  1.09299[m] 0.0861067[degree] Ignore this frame (1645868472.126073000)
+Too large transform!!  1.64033[m] 0.0831709[degree] Ignore this frame (1645868482.685284000)
+Too large transform!!  1.1412[m] 0.0330262[degree] Ignore this frame (1645868534.600730000)
+Too large transform!!  2.21233[m] 0.0338375[degree] Ignore this frame (1645868545.096095000)
+
+--- pose graph optimization ---
+nodes: 11   edges: 10
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 68 / 512
+chi2: (before)1.5433e+12 -> (after)3.37731e-30
+time: 0.013[sec]
+
+--- pose graph optimization ---
+nodes: 13   edges: 12
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 37 / 512
+chi2: (before)5.2347e+11 -> (after)2.90037e-30
+time: 0.010[sec]
+
+--- pose graph optimization ---
+nodes: 14   edges: 13
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 19 / 512
+chi2: (before)2.90037e-30 -> (after)2.28651e-30
+time: 0.003[sec]
+
+--- pose graph optimization ---
+nodes: 15   edges: 14
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 156 / 512
+chi2: (before)3.08543e+26 -> (after)2.53316e-30
+time: 0.092[sec]
+
+--- pose graph optimization ---
+nodes: 16   edges: 15
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 51 / 512
+chi2: (before)6.99817e+11 -> (after)2.75481e-30
+time: 0.017[sec]
+
+--- pose graph optimization ---
+nodes: 17   edges: 16
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 122 / 512
+chi2: (before)2.75481e-30 -> (after)1.01273e-29
+time: 0.025[sec]
+
+--- pose graph optimization ---
+nodes: 18   edges: 17
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 128 / 512
+chi2: (before)1.01273e-29 -> (after)6.0153e-30
+time: 0.035[sec]
+
+--- pose graph optimization ---
+nodes: 19   edges: 18
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 3 / 512
+chi2: (before)7748.82 -> (after)5.62637e-30
+time: 0.001[sec]
+Too large transform!!  1.00963[m] 0.032655[degree] Ignore this frame (1645868612.795316000)
+Too large transform!!  1.02426[m] 0.00615113[degree] Ignore this frame (1645868617.973885000)
+
+--- pose graph optimization ---
+nodes: 20   edges: 19
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 86 / 512
+chi2: (before)2.69618e-05 -> (after)1.9142e-29
+time: 0.012[sec]
+
+--- pose graph optimization ---
+nodes: 21   edges: 20
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 1 / 512
+chi2: (before)1.9142e-29 -> (after)2.72953e-29
+time: 0.001[sec]
+Too large transform!!  2.19394[m] 0.0206056[degree] Ignore this frame (1645868693.786309000)
+
+--- pose graph optimization ---
+nodes: 23   edges: 22
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 96 / 512
+chi2: (before)-nan -> (after)5.96318e-29
+time: 0.012[sec]
+
+--- pose graph optimization ---
+nodes: 24   edges: 23
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 1 / 512
+chi2: (before)2.69486e+23 -> (after)5.96874e-29
+time: 0.001[sec]
+
+--- pose graph optimization ---
+nodes: 25   edges: 24
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 1 / 512
+chi2: (before)7.31607e+10 -> (after)6.77654e-29
+time: 0.001[sec]
+
+--- pose graph optimization ---
+nodes: 26   edges: 25
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 8 / 512
+chi2: (before)6.77654e-29 -> (after)7.44692e-29
+time: 0.005[sec]
+Too large transform!!  2.13171[m] 0.0569786[degree] Ignore this frame (1645868763.596529000)
+Too large transform!!  1.98977[m] 0.0748852[degree] Ignore this frame (1645868772.253344000)
+Too large transform!!  1.21196[m] 0.0272987[degree] Ignore this frame (1645868773.918120000)
+
+--- pose graph optimization ---
+nodes: 27   edges: 26
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 1 / 512
+chi2: (before)3.72773e+19 -> (after)8.30541e-29
+time: 0.002[sec]
+Too large transform!!  1.09623[m] 0.0253327[degree] Ignore this frame (1645868781.246452000)
+
+--- pose graph optimization ---
+nodes: 28   edges: 27
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 22 / 512
+chi2: (before)237.999 -> (after)9.07336e-29
+time: 0.004[sec]
+
+--- pose graph optimization ---
+nodes: 29   edges: 28
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 153 / 512
+chi2: (before)9.07336e-29 -> (after)9.59618e-29
+time: 0.029[sec]
+Too large transform!!  1.05273[m] 0.0106379[degree] Ignore this frame (1645868816.598467000)
+
+--- pose graph optimization ---
+nodes: 30   edges: 29
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 67 / 512
+chi2: (before)9.59618e-29 -> (after)5.32078e-29
+time: 0.015[sec]
+
+--- pose graph optimization ---
+nodes: 31   edges: 30
+optimizing... init
+chi2
+optimizing!!
+done
+iterations: 6 / 512
+chi2: (before)1.71774e-10 -> (after)3.69665e-29
+time: 0.002[sec]
+[0m[INFO] [1790768838.306689080, 1645868865.267158924]: Optimized edges have been output![0m
+Scan Matching time cost (median): 0.0531897
+Optimization time cost (median): 0.005413
+Ego velocity time cost (median): 0.005592
+all data dumped to:/root/catkin_ws/m3_results/cp_rate3_author_config/graph
+[31m================================================================================REQUIRED process [master] has died!
+process has died [pid 6480, exit code -15, cmd rosmaster --core -p 11311 -w 3 __log:=/root/.ros/log/3b10fa54-bcc4-11f1-a372-0ae2f23b4924/master.log].
+log file: /root/.ros/log/3b10fa54-bcc4-11f1-a372-0ae2f23b4924/master*.log
+Initiating shutdown!
+================================================================================[0m
+[1mprocess[rosout-1]: started with pid [6490][0m
+started core service [/rosout]
+[1mprocess[radarslam_nodelet_manager-2]: started with pid [6497][0m
+[1mprocess[radar_preprocessing_nodelet-3]: started with pid [6498][0m
+[1mprocess[scan_matching_odometry_nodelet-4]: started with pid [6499][0m
+[1mprocess[radar_graph_slam_nodelet-5]: started with pid [6505][0m
+[1mprocess[player-6]: started with pid [6510][0m
+[1m[player-6] process has finished cleanly
+log file: /root/.ros/log/3b10fa54-bcc4-11f1-a372-0ae2f23b4924/player-6*.log[0m
+[radar_graph_slam_nodelet-5] killing on exit
+[scan_matching_odometry_nodelet-4] killing on exit
+[radarslam_nodelet_manager-2] killing on exit
+[radar_preprocessing_nodelet-3] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m
