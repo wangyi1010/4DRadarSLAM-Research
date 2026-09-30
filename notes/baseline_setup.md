@@ -54,3 +54,15 @@ Play NTU4DRadLM bag via launch/rosbag_play_radar_*.launch
 - M1  local git repo skeleton      DONE
 - M2  Ubuntu build of original     DONE  (2026-09-30)
 - M3  NTU4DRadLM baseline run      pending
+
+## Pinned source versions (M2 build, 2026-09-30)
+Recorded from the compiled droplet workspace — these are the exact SHAs `catkin_make` succeeded against.
+
+| Package | Upstream | Commit |
+|---|---|---|
+| 4DRadarSLAM | zhuge2333/4DRadarSLAM | dd2ee8c2378630a84361f37331ba14665b203c14 |
+| fast_apdgicp | zhuge2333/fast_apdgicp | 8d1e1188f2566ec19ae73b842f90c96df66dde74 |
+| ndt_omp | koide3/ndt_omp | 5495fd9214945afcb4b35d5a1da385e405c52bf9 |
+| barometer_bmp388 | zhuge2333/barometer_bmp388 | 769411c24242faf15cd111f79b515e905a4c1550 |
+
+The `4DRadarSLAM` SHA matches this repo's `baseline` branch / `baseline-original` tag exactly.
