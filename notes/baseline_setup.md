@@ -76,3 +76,11 @@ See notes/m3_cp_baseline.md. Summary:
 
 ## M3.5 paper-fidelity runs (2026-09-30)
 See notes/m3_5_paper_fidelity.md. Three configs tested; frozen baseline at 5.15m ATE / 11.4% RE49 (Run A: paper kf density, default everything else). Paper's 2.61m / 3.56% is 2x better on translation and 10x better on rotation — unreachable from released code + documented launch args alone. Dyn-removal + ego-vel combo BROKEN (29m ATE) — do not enable together.
+
+## M3.6 root cause (2026-10-01) — SUPERSEDES M3.5 BASELINE
+The 5.15m baseline in M3.5 was a CPU-throughput artifact of 2 vCPU + rate=3 playback (dropped 62% of radar frames). At rate=0.5:
+- ATE front-end: 2.32m
+- ATE back-end:  2.22m (matches paper 2.35m)
+- RE49: 5.14%
+- 430 backend keyframes (paper: 437)
+The paper's numbers ARE reachable from the released code with all switches OFF, at rate=0.5. See notes/m3_6_cpu_diagnosis.md.
