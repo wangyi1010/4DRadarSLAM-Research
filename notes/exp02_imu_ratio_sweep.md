@@ -17,9 +17,9 @@ r=0 is enable_imu_fusion:=false (M3.7 Full). r=0.1 is exp-01. All ~5421 /odom,
 
 ## Findings
 
-### 1. Absolute rotation drift is MONOTONIC in IMU trust
+### 1. Absolute rotation drift is MONOTONIC in IMU trust (cause not yet proven)
 FE abs rotation (ATE rot): 4.49 -> 4.77 -> 6.60 -> 6.69 -> 7.80 deg.
-Strictly increasing with r. Confirms exp-01's hypothesis: the IMU injects a
+Strictly increasing with r. Consistent with accumulated IMU orientation bias: the fusion appears to inject a
 slowly accumulating yaw bias; the more we trust it, the larger the absolute
 orientation error.
 
@@ -42,6 +42,12 @@ signal:
 - low-frequency gyro bias (accumulates as absolute yaw drift -> want LESS IMU).
 A fixed ratio trades one against the other. The non-monotonicity in RE49 rot is
 the signature of these two effects crossing over as r increases.
+
+CAVEAT: monotonically increasing absolute rotation error is CONSISTENT WITH
+accumulated IMU orientation bias, but does not by itself prove gyro yaw bias is
+the cause. Calibration error, timestamp alignment, radar-IMU frame conventions,
+or the specific fusion implementation could produce similar behaviour. Treat
+'gyro bias' as a hypothesis until the IMU/fusion equations are inspected.
 
 ## Conclusion -> motivates exp-03
 The clean, measured motivation for a decoupled/adaptive fusion:
