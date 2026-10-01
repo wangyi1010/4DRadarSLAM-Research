@@ -716,8 +716,16 @@ private:
   bool imu_debug_out;
   Eigen::Matrix3d global_orient_matrix;  // The rotation matrix with initial IMU roll & pitch measurement (yaw = 0)
     double timeLaserOdometry = 0;
-    int imuPointerFront;
-    int imuPointerLast;
+    // BUGFIX: these ring-buffer indices were uninitialized. transformUpdate()
+    // indexes imuTime/imuRoll/imuPitch (size imuQueLength=200) with
+    // imuPointerFront directly, so an indeterminate value causes an
+    // out-of-bounds access -> segfault that kills the nodelet manager.
+    // When the garbage value happened to be in range, the IMU interpolation
+    // silently read arbitrary/stale samples instead, making results
+    // irreproducible. Init follows the usual LOAM convention:
+    // Last = -1 means "no IMU data yet" (checked by `if (imuPointerLast >= 0)`).
+    int imuPointerFront = 0;
+    int imuPointerLast = -1;
     double imuTime[imuQueLength];
     float imuRoll[imuQueLength];
     float imuPitch[imuQueLength];
