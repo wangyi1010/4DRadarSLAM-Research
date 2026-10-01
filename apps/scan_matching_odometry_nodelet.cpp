@@ -135,6 +135,10 @@ private:
     imu_debug_out = private_nh.param<bool>("imu_debug_out", false);
     cout << "enable_imu_fusion = " << enable_imu_fusion << endl;
     imu_fusion_ratio = private_nh.param<double>("imu_fusion_ratio", 0.1);
+    // exp-03: per-axis roll/pitch fusion weights (default to the scalar).
+    imu_fusion_ratio_roll  = private_nh.param<double>("imu_fusion_ratio_roll",  imu_fusion_ratio);
+    imu_fusion_ratio_pitch = private_nh.param<double>("imu_fusion_ratio_pitch", imu_fusion_ratio);
+    cout << "imu_fusion_ratio roll/pitch = " << imu_fusion_ratio_roll << " / " << imu_fusion_ratio_pitch << endl;
 
     // graph_slam.reset(new GraphSLAM(pnh.param<std::string>("g2o_solver_type", "lm_var")));
 
@@ -324,8 +328,8 @@ private:
       Eigen::Matrix3d imu_rot_transed = global_orient_matrix.inverse() * imu_rot;
       Eigen::Vector3d ypr_imu_trans = R2ypr(imu_rot_transed);
       double& yaw_ = ypr_odom(0);
-      double pitch_fused = (1 - imu_fusion_ratio) * ypr_odom(1) + imu_fusion_ratio * ypr_imu_trans(1);
-      double roll_fused = (1 - imu_fusion_ratio) * ypr_odom(2) + imu_fusion_ratio * ypr_imu_trans(2);
+      double pitch_fused = (1 - imu_fusion_ratio_pitch) * ypr_odom(1) + imu_fusion_ratio_pitch * ypr_imu_trans(1);
+      double roll_fused  = (1 - imu_fusion_ratio_roll)  * ypr_odom(2) + imu_fusion_ratio_roll  * ypr_imu_trans(2);
       geometry_msgs::Quaternion rosQuat = tf::createQuaternionMsgFromRollPitchYaw(roll_fused, pitch_fused, yaw_);
       Eigen::Quaterniond quat_updated = Eigen::Quaterniond(rosQuat.w, rosQuat.x, rosQuat.y, rosQuat.z);
       odom_to_update.block<3, 3>(0, 0) = quat_updated.toRotationMatrix();
@@ -730,6 +734,8 @@ private:
     float imuRoll[imuQueLength];
     float imuPitch[imuQueLength];
     double imu_fusion_ratio;
+    double imu_fusion_ratio_roll;   // exp-03
+    double imu_fusion_ratio_pitch;  // exp-03
 
   std::unique_ptr<message_filters::Subscriber<geometry_msgs::TwistWithCovarianceStamped>> ego_vel_sub;
   std::unique_ptr<message_filters::Subscriber<sensor_msgs::PointCloud2>> points_sub;
