@@ -1,23 +1,63 @@
-# 4DRadarSLAM-Research
+# 4DRadarSLAM — Reproduction, Diagnosis & Upstream Fixes
 
-Research and reproduction workspace based on the original
-[4DRadarSLAM](https://github.com/zhuge2333/4DRadarSLAM) project by Zhang et al.
+A self-driven reproduction and investigation of
+[4DRadarSLAM](https://github.com/zhuge2333/4DRadarSLAM) (Zhang et al., ITSC 2023),
+a ROS package for 6-DOF SLAM on a 4D imaging radar (APDGICP scan matching +
+pose-graph optimization). This workspace reproduces the published baseline on the
+NTU4DRadLM dataset, diagnoses why it did not reproduce out of the box, and
+contributes two fixes back upstream.
 
-Current status:
+Stack: C++ · ROS Noetic · PCL · g2o · GTSAM · Docker · rpg_trajectory_evaluation / evo
 
-- M1 repository setup: complete
-- M2 Ubuntu baseline build: pending
-- M3 baseline reproduction: pending
+## Highlights
 
-Repository structure:
+- Reproduced the `cp` baseline end-to-end and found the released launch's default
+  `--rate=3` playback silently drops ~62% of radar frames on a modest 2-vCPU host,
+  inflating ATE ~2.5x. At `--rate=0.5` (full frame coverage) the result matches /
+  beats the paper (BE ATE ~0.9 m vs paper 2.35 m; keyframe count 430 vs 437).
+- Found and fixed an **uninitialized IMU ring-buffer index** in
+  `ScanMatchingOdometryNodelet`: `imuPointerFront` / `imuPointerLast` were used to
+  index fixed-size (200) arrays without initialization. Direct instrumentation of
+  pristine upstream showed `imuPointerFront = 52688` at first use — far outside
+  the valid range — producing intermittent `SIGSEGV` that kills the nodelet
+  manager (16 crashes in one session with fusion on, 0 with it off) or, when the
+  garbage index lands in range, silently wrong IMU samples.
+  → Upstream **[PR #18](https://github.com/zhuge2333/4DRadarSLAM/pull/18)** (2-line fix).
+- Found and fixed a **build/linkage defect**: the scan-matching nodelet target
+  omits `keyframe.cpp` and the g2o libraries, so the shared library builds but
+  fails to `dlopen` with an undefined `KeyFrame::KeyFrame` symbol.
+  → Upstream **[PR #19](https://github.com/zhuge2333/4DRadarSLAM/pull/19)** (CMake fix).
+- Ran a controlled 2x2 factorial (with repeats and a deterministic baseline, on
+  the fixed build) testing per-axis roll/pitch IMU-fusion weights. Result: a clean
+  **negative** — the gravity-referenced tilt does not decompose into independent
+  Euler-axis weights (roll-only fusion blows pitch error to 5.5 deg), so the
+  per-axis idea is refuted and IMU fusion as implemented gives no net benefit.
+  This also retracts the fusion gains that the pre-fix (buggy) runs appeared to show.
 
-- `baseline` and `baseline-original`: unmodified upstream snapshot
-- `main`: stable research version
-- `dev`: active development
-- `exp/*`: isolated algorithm experiments
+## Reproducibility practices
 
-The original GPL-3.0 license is retained. This repository is a derivative work
-distributed under GPL-3.0.
+Every quantitative claim is backed by repeated runs with error bars, a
+deterministic no-IMU control, SHA-pinned dataset + source commits, and the exact
+launch configuration recorded in `notes/`. Results that ran through undefined
+behaviour are explicitly marked retracted rather than silently kept.
+
+## Where to look
+
+- `notes/bugfix_imu_pointer_init.md`, `notes/upstream_report_imu_pointer_init.md` — the IMU-index bug.
+- `notes/upstream_pr2_scan_matching_linkage.md` — the CMake/linkage bug.
+- `notes/exp03_result.md`, `notes/exp03_diagnostic.md` — the per-axis factorial and its diagnosis.
+- `notes/m3_6_cpu_diagnosis.md`, `notes/m3_7_valid_ablation.md` — the frame-dropping / CPU finding and baseline ablation.
+- `notes/baseline_setup.md` — the verified build/run environment.
+
+## Branches
+
+- `main` — curated summary (this branch).
+- `dev` — full notes and diagnostics.
+- `fix/imu-pointer-init`, `exp/per-axis-v2` — the bug fix and the per-axis experiment.
+- `upstream-fix/imu-pointer-init`, `upstream-fix/scan-matching-linkage` — the minimal branches behind PR #18 / #19 (off upstream `main`).
+
+This repository is a derivative work of 4DRadarSLAM and retains its GPL-3.0
+license. The original project's README follows.
 
 ---
 
