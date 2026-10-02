@@ -50,8 +50,8 @@ launch 2: imuPointerFront=0      imuPointerLast=38  imuQueLength=200
 launch 3: imuPointerFront=0      imuPointerLast=35  imuQueLength=200
 ```
 
-`imuPointerFront = 52688` indexes roughly 421 KB past a 200-element array. The
-value differs between launches, as expected for an indeterminate read.
+`imuPointerFront = 52688` is far outside the valid index range [0, 199].
+The value differs between launches, as expected for an indeterminate read.
 
 This produces two distinct failure modes:
 
